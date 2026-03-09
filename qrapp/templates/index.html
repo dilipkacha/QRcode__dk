@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>QR Generator</title>
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Dynamic QR Generator</h1>
+
+<form method="POST">
+{% csrf_token %}
+
+<select name="type">
+<option value="url">URL</option>
+<option value="email">Email</option>
+<option value="phone">Phone</option>
+<option value="contact">Contact</option>
+</select>
+
+<input type="text" name="data" placeholder="Enter data">
+
+<input type="color" name="color">
+
+<button type="submit">Generate QR</button>
+
+</form>
+
+{% if qr %}
+
+<div class="qr-box">
+
+<img src="{{qr.qr_image.url}}">
+
+<br><br>
+
+<a href="{{qr.qr_image.url}}" download>
+
+<button>Download QR</button>
+
+</a>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
