@@ -1,0 +1,1 @@
+"# Django QR Generator Project" 
